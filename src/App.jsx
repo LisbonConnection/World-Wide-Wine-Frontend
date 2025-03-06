@@ -13,7 +13,7 @@ function App() {
   return (
     <>
 
-        <div>
+        <div className="container relative mx-auto p-6 ">
           <Navbar />
 
           <Routes>
