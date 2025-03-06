@@ -18,17 +18,33 @@ function SignupPage(props) {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
 
-  const handleSignupSubmit = (e) => {};
+  const handleSignupSubmit = (e) => {
+    e.preventDefault();
+    // Create an object representing the request body
+    const requestBody = { email, password, name };
+
+    // Make an axios request to the API
+    // If the POST request is a successful redirect to the login page
+    // If the request resolves with an error, set the error message in the state
+    axios
+      .post(`${API_URL}/auth/signup`, requestBody)
+      .then((response) => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
+  };
 
   return (
     <>
       <div className="flex-col items-center justify-center text-center space-y-10">
-        
         <form
           className="flex flex-col items-center justify-center text-center space-y-2"
           onSubmit={handleSignupSubmit}
         >
-            <h1>Signup</h1>
+          <h1>Signup</h1>
 
           <label>Email:</label>
           <input
