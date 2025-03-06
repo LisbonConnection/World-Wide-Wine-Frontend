@@ -34,8 +34,9 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
+    <form className="flex flex-col items-center justify-center text-center space-y-5"
+    onSubmit={handleSubmit}>
+      <h1>Login</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <input
         type="email"
@@ -43,6 +44,7 @@ const Login = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
+         className="border p-2"
       />
       <input
         type="password"
@@ -50,8 +52,11 @@ const Login = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
+         className="border p-2"
       />
-      <button type="submit">Login</button>
+       <button type="submit" className="bg-blue-500 text-white p-2">
+            Login
+          </button>
     </form>
   );
 };
