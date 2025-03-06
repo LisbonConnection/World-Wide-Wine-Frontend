@@ -6,7 +6,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 // import { ThemeContext } from '../context/theme.context';
 
 function Navbar() {
-  const { isLoggedIn, user } = useContext(AuthContext);
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   // const {theme} = useContext(ThemeContext);
   return (
     <>
@@ -33,9 +33,10 @@ function Navbar() {
               </button>
 
               <div className="flex my-3">
-                <button className="bg-blue-600 text-white hover:bg-blue-700 font-bold text-black h-12 w-auto rounded-2xl p-5 flex items-center">
+                <button onClick={logOutUser} className="bg-blue-600 text-white hover:bg-blue-700 font-bold text-black h-12 w-auto rounded-2xl p-5 flex items-center">
                   Logout
                 </button>
+                {/* <span>{user && user.name}</span> */}
               </div>
             </>
           )}
