@@ -44,14 +44,18 @@ function Navbar() {
               <button className=" hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-black h-16 w-auto rounded flex items-center">
                 About
               </button>
+              <Link to="signup">
               <button className=" hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-black h-16 w-auto rounded flex items-center">
                 Signup
               </button>
+              </Link>
 
               <div className="flex my-3">
+              <Link to="login">
                 <button className="bg-blue-600 text-white hover:bg-blue-700 font-bold text-black h-12 w-auto rounded-2xl p-5 flex items-center">
                   Login
                 </button>
+              </Link>
               </div>
             </>
           )}
