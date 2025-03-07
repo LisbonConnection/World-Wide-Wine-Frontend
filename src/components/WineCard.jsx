@@ -2,7 +2,7 @@ import React from 'react'
 
 function WineCard() {
   return (
-    <div>WineCard</div>
+    <div>This is the WineCard</div>
   )
 }
 
