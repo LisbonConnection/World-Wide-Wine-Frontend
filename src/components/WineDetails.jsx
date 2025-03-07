@@ -41,8 +41,8 @@ function WineDetails() {
       <p><strong>Price:</strong> €{wine.price}</p>
       <p><strong>Description:</strong> {wine.description}</p>
       <p><strong>Rating:</strong> {wine.ratingAverage.toFixed(2)}</p>
-      <p><strong>Full Description:</strong> {wine.fullDescription}</p>
-      <p><strong>Year:</strong> {wine.year}</p>
+      {/* <p><strong>Full Description:</strong> {wine.fullDescription}</p>
+      <p><strong>Year:</strong> {wine.year}</p> */}
 
       
       <button onClick={() => navigate("/")}>Back to Home</button> 
