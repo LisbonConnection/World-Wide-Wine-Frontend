@@ -4,27 +4,19 @@ import { useNavigate } from 'react-router-dom';
 
 function AddNewWine() {
   const [wineName, setwineName] = useState('');
-  const [image, setImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
+  const [image, setImage] = useState('');
   const [region, setRegion] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
-  const [varietalName, setVarietalName] = useState('');
+  const [varietalName, setVarietalName] = useState('');  
   const [error, setError] = useState(null);
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImage(file);
-      setImagePreview(URL.createObjectURL(file));
-    }
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+    // get our stored token
     const token = localStorage.getItem('authToken');
 
     if (!token) {
@@ -32,29 +24,35 @@ function AddNewWine() {
       return;
     }
 
-    const formData = new FormData();
-    formData.append('wineName', wineName);
-    formData.append('image', image);
-    formData.append('region', region);
-    formData.append('price', price);
-    formData.append('description', description);
-    formData.append('varietalName', varietalName);
-
-    try {
-      const response = await axios.post('http://localhost:5005/api/wines', formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data',
-        },
+   // create new wine request to backend
+    const newWine = {
+      wineName,
+      image,
+      region,
+      price,
+      description,
+      varietalName,  
+    };
+   
+    axios
+      .post(
+        'http://localhost:5005/api/wines',
+        newWine,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, 
+          },
+        }
+      )
+      .then((response) => {
+        if (response.status === 201) {
+          navigate('/');
+        }
+      })
+      .catch((error) => {
+        console.error("Error creating wine:", error);
+        setError("Error creating wine. Please try again.");
       });
-
-      if (response.status === 201) {
-        navigate('/');
-      }
-    } catch (error) {
-      console.error("Error creating wine:", error);
-      setError("Error creating wine. Please try again.");
-    }
   };
 
   return (
@@ -67,7 +65,7 @@ function AddNewWine() {
 
         {error && <p className="text-red-500">{error}</p>}
 
-        <div className="space-y-2 w-full">
+        <div className="space-y-2">
           <label htmlFor="wineName" className="text-lg">Wine Name</label>
           <input
             type="text"
@@ -79,7 +77,7 @@ function AddNewWine() {
           />
         </div>
 
-        <div className="space-y-2 w-full">
+        <div className="space-y-2">
           <label htmlFor="varietalName" className="text-lg">Varietal Name</label>
           <input
             type="text"
@@ -91,24 +89,18 @@ function AddNewWine() {
           />
         </div>
 
-        <div className="space-y-2 w-full">
-          <label htmlFor="image" className="text-lg">Image</label>
-          <div className="relative">
-            <input
-              type="file"
-              id="image"
-              onChange={handleImageChange}
-              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-              required
-            />
-            <div className="border p-2 rounded w-full bg-gray-100 text-center text-gray-700 hover:bg-gray-200">
-              {image ? image.name : "Choose an image"}
-            </div>
-          </div>
-          {imagePreview && <img src={imagePreview} alt="Preview" className="mt-2 w-32 h-32 object-cover" />}
+        <div className="space-y-2">
+          <label htmlFor="image" className="text-lg">Image URL</label>
+          <input
+            type="text"
+            id="image"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+            className="border p-2 rounded w-full"
+          />
         </div>
 
-        <div className="space-y-2 w-full">
+        <div className="space-y-2">
           <label htmlFor="region" className="text-lg">Region</label>
           <input
             type="text"
@@ -120,7 +112,7 @@ function AddNewWine() {
           />
         </div>
 
-        <div className="space-y-2 w-full">
+        <div className="space-y-2">
           <label htmlFor="price" className="text-lg">Price (€)</label>
           <input
             type="number"
@@ -132,7 +124,7 @@ function AddNewWine() {
           />
         </div>
 
-        <div className="space-y-2 w-full">
+        <div className="space-y-2">
           <label htmlFor="description" className="text-lg">Description</label>
           <textarea
             id="description"
