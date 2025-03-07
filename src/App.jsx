@@ -9,6 +9,9 @@ import NewCollectionWines from "./components/NewCollectionWines"
 import BestRatingWines from "./components/BestRatingWines"
 import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
+import WineCard from "./components/WineCard";
+import ErrorPage404 from "./components/ErrorPage404";
+
 
 // import { createContext } from "react";
 
@@ -31,6 +34,7 @@ function App() {
             <Route path="/allcollections" element={ <IsAnon> <AllCollectionWines /> </IsAnon>} />
             <Route path="/newcollections" element={ <IsAnon> <NewCollectionWines /> </IsAnon>} />
             <Route path="/bestratingns" element={ <IsAnon> <BestRatingWines /> </IsAnon>} />
+            <Route path="*" element={<ErrorPage404 />} />
           </Routes>
         </div>
 
