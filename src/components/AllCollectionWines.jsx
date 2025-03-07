@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import WineCard from "./WineCard";
+
 
 const API_URL = "http://localhost:5005";
 
