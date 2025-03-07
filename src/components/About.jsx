@@ -1,13 +1,13 @@
 import React from "react";
-import profilepic from "../assets/profilepic.jpg";
-import githubb from "../assets/githubb.png";
-import html from "../assets/html.png";
-import tailwind from "../assets/tailwind.png";
-import javascrp from "../assets/javascript.png";
-import ract from "../assets/react.png";
-import fbase from "../assets/firebase.png";
-import { SocialIcon } from "react-social-icons";
-import Telmo from "../assets/Telmo1.jpg";
+// import profilepic from "../assets/profilepic.jpg";
+// import githubb from "../assets/githubb.png";
+// import html from "../assets/html.png";
+// import tailwind from "../assets/tailwind.png";
+// import javascrp from "../assets/javascript.png";
+// import ract from "../assets/react.png";
+// import fbase from "../assets/firebase.png";
+// import { SocialIcon } from "react-social-icons";
+// import Telmo from "../assets/Telmo1.jpg";
 
 function About() {
   //  const [isClicked, setisClicked] = useState(false);
@@ -23,13 +23,13 @@ function About() {
           About our Project
         </h1>
         <div>
-          <p className="tracking-widest text-gray-500 font-medium text-center mt-5">
+          {/* <p className="tracking-widest text-gray-500 font-medium text-center mt-5">
 
           </p>
         </div>
         <div className=" mt-20 flex items-center justify-center min-h-full border-none shadow-none outline-none overflow-hidden">
           <div className=" flex-col items-center m-6 space-y-10 shadow-2xl outline-none rounded md:flex flex-row md:space-y-0 md:m-0">
-            {/* first profile */}
+            first profile
             <div className="flex justify-center rounded-2xl border-2 border-y-blue-600 border-x-gray-200 h-90 w-80 items-center justify-between md:p-20">
               <div>
                 <div className="flex items-center justify-center">
@@ -56,7 +56,7 @@ function About() {
               </div>
             </div>
 
-            {/* second profile */}
+            second profile
             <div className="flex justify-center rounded-2xl border-2 border-y-blue-300 border-x-gray-400 h-90 w-80 items-center justify-between md:p-20">
               <div>
                 <div className="flex items-center justify-center">
@@ -105,7 +105,7 @@ function About() {
               alt="img"
               className="h-10 w-10 rounded-full cover"
             />
-          </div>
+          </div> */}
         </div>
       </section>
     </>
