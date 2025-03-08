@@ -5,7 +5,7 @@ import axios from "axios";
 const API_URL = "http://localhost:5005";
 
 function AuthWineDetails() {
-  // Get Id of specific wine using useParams
+  // get id of specific wine using useParams
   const { id } = useParams(); 
   
   const [wine, setWine] = useState(null);
@@ -14,7 +14,7 @@ function AuthWineDetails() {
   const navigate = useNavigate(); 
 
   useEffect(() => {
-    // Fetch the wine details from the backend
+   
     axios
       .get(`${API_URL}/api/wines/${id}`)
       .then((response) => {
@@ -34,10 +34,34 @@ function AuthWineDetails() {
     return <div>Loading...</div>;
   }
 
-  // Navigate to the update page
   const handleUpdate = () => {
-    navigate(`/updatewine/${id}`);  // Navigate to the UpdateWine page with the wine ID
+    navigate(`/updatewine/${id}`);
   };
+
+  const handleDelete = () => {
+    const token = localStorage.getItem('authToken');
+
+    if (!token) {
+      setError("No authorization token found.");
+      return;
+    }
+
+    axios
+      .delete(`${API_URL}/api/wines/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log("Wine deleted successfully:", response.data);
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.error("Error deleting wine:", error);
+        setError("Error deleting wine");
+      });
+  };
+
 
   return (
     <div className="wine-details-container">
@@ -51,6 +75,10 @@ function AuthWineDetails() {
       {/* Update button */}
       <button onClick={handleUpdate} className="update-btn">
         Update Wine
+      </button>
+
+      <button onClick={handleDelete} className="delete-btn">
+        Delete Wine
       </button>
 
       {/* Back to Home button */}
