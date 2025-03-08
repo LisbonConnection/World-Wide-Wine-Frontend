@@ -14,7 +14,7 @@ function AddNewWine() {
   const navigate = useNavigate();
 
   const handleImageChange = (e) => {
-    setImage(e.target.files[0]);  // Store the file object
+    setImage(e.target.files[0]);  
   };
 
   const handleSubmit = (e) => {
@@ -28,7 +28,7 @@ function AddNewWine() {
 
     const formData = new FormData();
     formData.append('wineName', wineName);
-    formData.append('image', image);  // Append the image file
+    formData.append('image', image);  
     formData.append('region', region);
     formData.append('price', price);
     formData.append('description', description);
@@ -38,7 +38,7 @@ function AddNewWine() {
       .post('http://localhost:5005/api/wines', formData, {
         headers: {
           'Authorization': `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data',  // Important to set for file upload
+          'Content-Type': 'multipart/form-data', 
         },
       })
       .then((response) => {
