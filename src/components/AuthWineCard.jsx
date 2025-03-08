@@ -6,11 +6,11 @@ function AuthWineCard({ wine, onWineClick }) {
 
   return (
     <div className="wine-card" onClick={() => onWineClick(wine)} style={{ cursor: "pointer" }}>
-      <h3>{wine.wineName}</h3>
-      <p><strong>Varietal:</strong> {wine.varietalName}</p>
+      <h1>{wine.wineName}</h1>
+      {/* <p><strong>Varietal:</strong> {wine.varietalName}</p> */}
       <p><strong>Region:</strong> {wine.region}</p>
       <p><strong>Price:</strong> €{wine.price}</p>
-      <p><strong>Rating:</strong> {rating}</p> 
+      {/* <p><strong>Rating:</strong> {rating}</p>  */}
     </div>
   );
 }

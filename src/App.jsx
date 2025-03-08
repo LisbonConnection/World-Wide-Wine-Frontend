@@ -15,6 +15,7 @@ import WineDetails from "./components/WineDetails";
 import Dashboard from "./pages/Dashboard";
 import AddNewWine from "./components/AddNewWine";
 import AuthWineDetails from "./components/AuthWineDetails"
+import UpdateWine from "./components/UpdateWine";
 
 
 // import { createContext } from "react";
@@ -41,6 +42,7 @@ function App() {
             <Route path="/wine/:id" element={<WineDetails/>}/>
             <Route path="/dashboard" element={<Dashboard/> }/>
             <Route path="/addwine" element={<AddNewWine/>}/>
+            <Route path="/updatewine/:id" element={<UpdateWine/> }/>
             <Route path="/wines/:id" element={<AuthWineDetails/>}/>
             <Route path="*" element={<ErrorPage404 />} />
           </Routes>

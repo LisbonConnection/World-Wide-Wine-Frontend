@@ -5,7 +5,7 @@ import axios from "axios";
 const API_URL = "http://localhost:5005";
 
 function AuthWineDetails() {
-  // Get Id of specific wine using useparams 
+  // Get Id of specific wine using useParams
   const { id } = useParams(); 
   
   const [wine, setWine] = useState(null);
@@ -14,8 +14,9 @@ function AuthWineDetails() {
   const navigate = useNavigate(); 
 
   useEffect(() => {
+    // Fetch the wine details from the backend
     axios
-      .get(`${API_URL}/api/wines/${id}`) 
+      .get(`${API_URL}/api/wines/${id}`)
       .then((response) => {
         setWine(response.data);
       })
@@ -33,22 +34,31 @@ function AuthWineDetails() {
     return <div>Loading...</div>;
   }
 
+  // Navigate to the update page
+  const handleUpdate = () => {
+    navigate(`/updatewine/${id}`);  // Navigate to the UpdateWine page with the wine ID
+  };
+
   return (
-    <div>
+    <div className="wine-details-container">
       <h2>{wine.wineName}</h2>
       <p><strong>Varietal:</strong> {wine.varietalName}</p>
       <p><strong>Region:</strong> {wine.region}</p>
       <p><strong>Price:</strong> €{wine.price}</p>
       <p><strong>Description:</strong> {wine.description}</p>
       <p><strong>Rating:</strong> {wine.ratingAverage.toFixed(2)}</p>
-      <p>Testing</p>
-      {/* <p><strong>Full Description:</strong> {wine.fullDescription}</p>
-      <p><strong>Year:</strong> {wine.year}</p> */}
 
-      
-      <button onClick={() => navigate("/dashboard")}>Back to Home</button> 
+      {/* Update button */}
+      <button onClick={handleUpdate} className="update-btn">
+        Update Wine
+      </button>
+
+      {/* Back to Home button */}
+      <button onClick={() => navigate("/dashboard")} className="back-home-btn">
+        Back to Home
+      </button>
     </div>
   );
 }
 
-export default AuthWineDetails
+export default AuthWineDetails;
