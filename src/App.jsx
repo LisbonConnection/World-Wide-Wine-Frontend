@@ -16,6 +16,8 @@ import Dashboard from "./pages/Dashboard";
 import AddNewWine from "./components/AddNewWine";
 import AuthWineDetails from "./components/AuthWineDetails"
 import UpdateWine from "./components/UpdateWine";
+import { ToastContainer } from "react-toastify";
+
 
 
 // import { createContext } from "react";
@@ -30,6 +32,7 @@ function App() {
 
         <div className="container relative mx-auto p-6 ">
           <Navbar />
+          <ToastContainer position="top-center" autoClose ={2000}/>
 
           <Routes>
             <Route path="/" element={<Home />} />
