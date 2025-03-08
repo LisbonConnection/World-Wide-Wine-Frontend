@@ -4,46 +4,43 @@ import { useNavigate } from 'react-router-dom';
 
 function AddNewWine() {
   const [wineName, setwineName] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(null);
   const [region, setRegion] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
-  const [varietalName, setVarietalName] = useState('');  
+  const [varietalName, setVarietalName] = useState('');
   const [error, setError] = useState(null);
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);  // Store the file object
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
-    // get our stored token
     const token = localStorage.getItem('authToken');
-
     if (!token) {
       setError("No authorization token found");
       return;
     }
 
-   // create new wine request to backend
-    const newWine = {
-      wineName,
-      image,
-      region,
-      price,
-      description,
-      varietalName,  
-    };
-   
+    const formData = new FormData();
+    formData.append('wineName', wineName);
+    formData.append('image', image);  // Append the image file
+    formData.append('region', region);
+    formData.append('price', price);
+    formData.append('description', description);
+    formData.append('varietalName', varietalName);
+
     axios
-      .post(
-        'http://localhost:5005/api/wines',
-        newWine,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, 
-          },
-        }
-      )
+      .post('http://localhost:5005/api/wines', formData, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',  // Important to set for file upload
+        },
+      })
       .then((response) => {
         if (response.status === 201) {
           navigate('/dashboard');
@@ -90,13 +87,13 @@ function AddNewWine() {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="image" className="text-lg">Image URL</label>
+          <label htmlFor="image" className="text-lg">Upload Image</label>
           <input
-            type="text"
+            type="file"
             id="image"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            onChange={handleImageChange}
             className="border p-2 rounded w-full"
+            required
           />
         </div>
 
@@ -142,7 +139,7 @@ function AddNewWine() {
         </button>
       </form>
 
-      <a href="/" className="mt-4 text-blue-500 text-center">Back to Collection</a>
+      <a href="/dashboard" className="mt-4 text-blue-500 text-center">Back to Home</a>
     </div>
   );
 }
