@@ -185,13 +185,16 @@ function Navbar() {
           <div className="search-results mt-4 bg-white shadow-lg p-4">
             <h2 className="text-xl font-bold">Search Results:</h2>
             <ul>
-              {searchResults.map((wine) => (
+              {/* {searchResults.map((wine) => (
                 <li key={wine._id}>
                   <Link to={`/wines/${wine._id}`} className="text-blue-600">
-                    {wine.wineName} - {wine.region}
+                    {wine.wineName}
                   </Link>
                 </li>
-              ))}
+              ))} */}
+              {searchResults.map( (wines) => {
+                console.log(wines)
+              })}
             </ul>
           </div>
         )}
