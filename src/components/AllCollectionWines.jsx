@@ -26,8 +26,8 @@ function AllCollectionWines() {
   }
 
   return (
-    <div className="">
-      <div className="wine-list rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="max-w-full-xl mx-auto">
+      <div className="rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1">
         {wines.length > 0 ? (
           wines.map((wine) => (
             // {/* Link to wine details */}

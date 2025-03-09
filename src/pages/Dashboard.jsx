@@ -30,7 +30,7 @@ function Dashboard() {
   return (
     <>
       <div className="wine-collection">
-        <div className="wine-list">
+        <div className="wine-list rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {wines.length > 0 ? (
             wines.map((wine) => (
               // {/* Link to wine details */}

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -12,6 +12,7 @@ function Navbar() {
   const [searchResults, setSearchResults] = useState([]);
 
   const handleChange = (e) => setText(e.target.value);
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -165,11 +166,13 @@ function Navbar() {
                   <div className="relative flex justify-center items-center text-center mb-5">
                     <button
                       onClick={logOutUser}
+                      
                       className="absolute bg-blue-600 text-white text-xl hover:bg-blue-800 font-bold text-center h-15 w-70 flex items-center justify-center rounded transition-all ease-in-out duration-1000 hover:scale-110"
                     >
                       <p className="flex justify-center items-center text-center ">
                         Logout
                       </p>
+                      
                     </button>
 
                     <div className="mt-5 ml-3 bg-purple-600 hover:bg-blue-700 h-13 w-70 rounded"></div>

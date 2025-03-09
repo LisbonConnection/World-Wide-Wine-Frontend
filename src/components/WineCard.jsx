@@ -11,16 +11,17 @@ function WineCard({ wine, onWineClick }) {
   const imageUrl = wine.image && wine.image !== "" 
     ? `http://localhost:5005${wine.image}` 
     : "https://i.imgur.com/r8bo8u7.png";  
+    
   return (
     <>
-      <div className="max-w-6xl m-5 rounded-lg">
+      <div className="w-full m-2 rounded-lg">
         <div className="flex items-center justify-center w-full text-xl text-center text-white rounded-lg">
           <div className="group relative overflow-hidden rounded-lg">
             <div>
               <img
                 src={imageUrl}
                 alt={wine.wineName}
-                className="w-62 h-62 object-cover rounded-lg mb-2 duration-200 group-hover:scale-110"
+                className="w-42 h-42 object-cover rounded-lg mb-2 duration-200 group-hover:scale-110"
               />
             </div>
             <div className="flex absolute top-0 bottom-0 right-0 left-0 bg-gradient-to-b from-transparent to-gray-600 group-hover:from-grey-50 group-hover:to-white group-hover:opacity-70"></div>
