@@ -1,108 +1,205 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-// import { ThemeContext } from '../context/theme.context';
+import axios from "axios";
+import { AiOutlinePlus } from "react-icons/ai";
+import { FaPlus } from "react-icons/fa";
 
 function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-  // const {theme} = useContext(ThemeContext);
+  const [text, setText] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleChange = (e) => setText(e.target.value);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+      console.log("No token found");
+      return;
+    }
+
+    axios
+      .get(`http://localhost:5005/api/wines/search?query=${text}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log("Search results:", response.data);
+        setSearchResults(response.data);
+      })
+      .catch((error) => {
+        console.error(
+          "Error while searching for wines:",
+          error.response ? error.response.data : error.message
+        );
+      });
+  };
+
   return (
     <>
       <div>
-        <div className="flex justify-between my-6">
-          <Link to="/">
-            <p className="h-16 w-auto text-[40px]">Logo</p>
-          </Link>
-          {isLoggedIn && (
-            <>
-              <button className=" hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-black h-16 w-auto rounded flex items-center">
-                Wines
-                <ChevronDownIcon className="h-5 w-5 ml-2" />
-              </button>
-
-              <button className=" hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-black h-16 w-auto rounded flex items-center">
-                Beer
-                <ChevronDownIcon className="h-5 w-5 ml-2" />
-              </button>
-
-              <button className=" hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-black h-16 w-40 rounded flex items-center">
-                Drink now
-                <ChevronDownIcon className="h-5 w-5 ml-2" />
-              </button>
-
-              <div className="flex my-3">
-                <button onClick={logOutUser} className="bg-blue-600 text-white hover:bg-blue-700 font-bold text-black h-12 w-auto rounded-2xl p-5 flex items-center">
-                  Logout
-                </button>
-                {/* <span>{user && user.name}</span> */}
+        <div className="flex my-6 justify-between ml-20 mr-20">
+          <div className="flex space-x-20">
+            <Link to={isLoggedIn ? "/dashboard" : "/"}>
+              <div className="flex">
+              <p className="mt-2 h-18 w-auto text-4xl font-bold">W-</p>
+              <p className="mt-4 h-14 w-auto text-xl italic">Tappers</p>
               </div>
-            </>
-          )}
+              
+            </Link>
+
+            {isLoggedIn && (
+              <>
+                <div>
+                  <div className="h-16 w-auto text-xl mt-6 grid gap-6">
+                    <div>
+                      <form onSubmit={handleSubmit}>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            className="w-full bg-grey-200 pr-40 text-black"
+                            placeholder="Search wine"
+                            value={text}
+                            onChange={handleChange}
+                          />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {!isLoggedIn && (
+              <>
+                <div className="flex">
+                  <ul className="flex space-x-4 mb-10">
+                    <li className="relative group items-center flex">
+                      <Link
+                        to="/collection"
+                        className="text-gray-600 flex font-bold text-xl"
+                      >
+                        COLLECTION <ChevronDownIcon className="h-5 w-5 ml-2" />
+                      </Link>
+                      <div className="absolute left-0 mt-2 w-100 bg-white shadow-lg opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-300 ease-out">
+                        <ul className="flex">
+                          <li>
+                            <Link
+                              to="/allcollections"
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              All COLLECTION
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/newcollections"
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              NEW COLLECTIONS
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/bestratingns"
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              BEST RATING
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </>
+            )}
+          </div>
 
           {!isLoggedIn && (
             <>
-              {/* <Link to = "about">
-            <button className=" hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-black h-16 w-auto rounded flex items-center ">
-                Collections
-                <ChevronDownIcon className="h-5 w-5 ml-2" />
-              </button>
-
-            </Link> */}
-
-              <ul className="flex space-x-4">
-                <li className="relative group items-center flex">
-                  <Link to="/collection" className="text-gray-500 flex">
-                    COLLECTION <ChevronDownIcon className="h-5 w-5 ml-2" />
-                  </Link>
-                  <div className="absolute left-0 mt-2 w-100 bg-white shadow-lg opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-300 ease-out">
-                    <ul className="flex">
-                      <li>
-                        <Link
-                          to="/allcollections"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          All COLLECTION
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/newcollections"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          NEW COLLECTIONS
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/bestratingns"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          BEST RATING
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-
-              <Link to="signup">
-                <button className=" hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-black h-16 w-auto rounded flex items-center">
-                  Signup
-                </button>
-              </Link>
-
-              <div className="flex my-3">
-                <Link to="login">
-                  <button className="bg-blue-600 text-white hover:bg-blue-700 font-bold text-black h-12 w-auto rounded-2xl p-5 flex items-center">
-                    Login
+              <div className="flex justify-end space-x-10">
+                <Link to="signup">
+                  <button className="hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-xl text-gray-600 font-bold h-16 w-auto rounded flex items-center">
+                    Signup
                   </button>
+                </Link>
+
+                <Link to="login">
+                  <div className="relative flex justify-center items-center mb-10 text-center">
+                    <button className="absolute bg-blue-600 text-white text-xl hover:bg-blue-800 font-bold text-center h-15 w-70  p-5 flex items-center justify-center space-x-5 rounded transition-all ease-in-out duration-1000 hover:scale-110">
+                      <p className="flex justify-center items-center text-center ">
+                        Login
+                      </p>
+                    </button>
+
+                    <div className="mt-5 ml-3 bg-purple-600 hover:bg-blue-700 h-13 w-70 rounded"></div>
+                  </div>
                 </Link>
               </div>
             </>
           )}
+
+          {isLoggedIn && (
+            <>
+              <div className="flex justify-between">
+                <div className="flex space-x-5">
+                  <div className="flex h-10 w-10 items-center text-center justify-center mt-5 text-gray-400 border-1 border-gray-400 rounded-full">
+                    <Link to="/addwine">
+                      {" "}
+                      <FaPlus size={24} />{" "}
+                    </Link>
+                  </div>
+                  {/* <div className="flex">
+                    
+                    <span className="mt-6 text-xl text-gray-600 font-bold">
+                      {user && `Hi ${user.name}`}
+                    </span>
+                  </div> */}
+
+                  <div className="relative flex justify-center items-center text-center mb-5">
+                    <button
+                      onClick={logOutUser}
+                      className="absolute bg-blue-600 text-white text-xl hover:bg-blue-800 font-bold text-center h-15 w-70 flex items-center justify-center rounded transition-all ease-in-out duration-1000 hover:scale-110"
+                    >
+                      <p className="flex justify-center items-center text-center ">
+                        Logout
+                      </p>
+                    </button>
+
+                    <div className="mt-5 ml-3 bg-purple-600 hover:bg-blue-700 h-13 w-70 rounded"></div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
+
+        {/* Display Search Results */}
+        {searchResults.length > 0 && (
+          <div className="search-results mt-4 bg-white shadow-lg p-4">
+            <h2 className="text-xl font-bold">Search Results:</h2>
+            <ul>
+              {searchResults.map((wine) => (
+                <li key={wine._id}>
+                  <Link to={`/wines/${wine._id}`} className="text-blue-600">
+                    {wine.wineName} - {wine.region}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* If no search results */}
+        {text && searchResults.length === 0 && (
+          <div className="mt-4 text-gray-500">No wines found for "{text}".</div>
+        )}
       </div>
     </>
   );

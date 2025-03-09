@@ -1,15 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import AuthWineCard from '../components/AuthWineCard'
+import React from "react";
+import { Link } from "react-router-dom";
+import AuthWineCard from "../components/AuthWineCard";
 import axios from "axios";
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState } from "react";
+import { useEffect } from "react";
 
 const API_URL = "http://localhost:5005";
 
-
 function Dashboard() {
-
   const [wines, setWines] = useState([]);
   const [error, setError] = useState(null);
 
@@ -31,31 +29,22 @@ function Dashboard() {
 
   return (
     <>
-    <div>
-
-        <Link to="/addwine">
-        <button>Create a wine</button>
-        </Link>
-    </div>
-
-    <div className="wine-collection">
-      <div className="wine-list">
-        {wines.length > 0 ? (
-          wines.map((wine) => (
-            // {/* Link to wine details */}
-            <Link to={`/wines/${wine._id}`} key={wine._id}> 
-              <AuthWineCard wine={wine} />
-            </Link>
-          ))
-        ) : (
-          <p>No wines available</p>
-        )}
+      <div className="wine-collection">
+        <div className="wine-list">
+          {wines.length > 0 ? (
+            wines.map((wine) => (
+              // {/* Link to wine details */}
+              <Link to={`/wines/${wine._id}`} key={wine._id}>
+                <AuthWineCard wine={wine} />
+              </Link>
+            ))
+          ) : (
+            <p>No wines available</p>
+          )}
+        </div>
       </div>
-    </div>
-
     </>
-
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
