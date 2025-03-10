@@ -11,8 +11,35 @@ function Navbar() {
   const [text, setText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const handleChange = (e) => setText(e.target.value);
-  const navigate = useNavigate()
+  const handleChange = (e) => {
+    setText(e.target.value);
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+      console.log("No token found");
+      return;
+    }
+
+    axios
+      .get(`http://localhost:5005/api/wines/search`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          text: e.target.value,
+        },
+      })
+      .then((response) => {
+        console.log("Search results:", response.data);
+        setSearchResults(response.data);
+      })
+      .catch((error) => {
+        console.error(
+          "Error while searching for wines:",
+          error.response ? error.response.data : error.message
+        );
+      });
+  };
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,9 +51,12 @@ function Navbar() {
     }
 
     axios
-      .get(`http://localhost:5005/api/wines/search?query=${text}`, {
+      .get(`http://localhost:5005/api/wines/search`, {
         headers: {
           Authorization: `Bearer ${token}`,
+        },
+        params: {
+          text,
         },
       })
       .then((response) => {
@@ -48,10 +78,9 @@ function Navbar() {
           <div className="flex space-x-20">
             <Link to={isLoggedIn ? "/dashboard" : "/"}>
               <div className="flex">
-              <p className="mt-2 h-18 w-auto text-4xl font-bold">W-</p>
-              <p className="mt-4 h-14 w-auto text-xl italic">Tappers</p>
+                <p className="mt-2 h-18 w-auto text-4xl font-bold">W-</p>
+                <p className="mt-4 h-14 w-auto text-xl italic">Tappers</p>
               </div>
-              
             </Link>
 
             {isLoggedIn && (
@@ -59,7 +88,7 @@ function Navbar() {
                 <div>
                   <div className="h-16 w-auto text-xl mt-6 grid gap-6">
                     <div>
-                      <form onSubmit={handleSubmit}>
+                      <form>
                         <div className="relative">
                           <input
                             type="text"
@@ -166,13 +195,11 @@ function Navbar() {
                   <div className="relative flex justify-center items-center text-center mb-5">
                     <button
                       onClick={logOutUser}
-                      
                       className="absolute bg-blue-600 text-white text-xl hover:bg-blue-800 font-bold text-center h-15 w-70 flex items-center justify-center rounded transition-all ease-in-out duration-1000 hover:scale-110"
                     >
                       <p className="flex justify-center items-center text-center ">
                         Logout
                       </p>
-                      
                     </button>
 
                     <div className="mt-5 ml-3 bg-purple-600 hover:bg-blue-700 h-13 w-70 rounded"></div>
@@ -195,8 +222,8 @@ function Navbar() {
                   </Link>
                 </li>
               ))} */}
-              {searchResults.map( (wines) => {
-                console.log(wines)
+              {searchResults.map((wines) => {
+                console.log(wines);
               })}
             </ul>
           </div>
