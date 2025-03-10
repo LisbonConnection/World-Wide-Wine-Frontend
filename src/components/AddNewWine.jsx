@@ -1,49 +1,49 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function AddNewWine() {
-  const [wineName, setwineName] = useState('');
+  const [wineName, setwineName] = useState("");
   const [image, setImage] = useState(null);
-  const [region, setRegion] = useState('');
-  const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
-  const [varietalName, setVarietalName] = useState('');
+  const [region, setRegion] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [varietalName, setVarietalName] = useState("");
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
   const handleImageChange = (e) => {
-    setImage(e.target.files[0]);  
+    setImage(e.target.files[0]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem("authToken");
     if (!token) {
       setError("No authorization token found");
       return;
     }
 
     const formData = new FormData();
-    formData.append('wineName', wineName);
-    formData.append('image', image);  
-    formData.append('region', region);
-    formData.append('price', price);
-    formData.append('description', description);
-    formData.append('varietalName', varietalName);
+    formData.append("wineName", wineName);
+    formData.append("image", image);
+    formData.append("region", region);
+    formData.append("price", price);
+    formData.append("description", description);
+    formData.append("varietalName", varietalName);
 
     axios
-      .post('http://localhost:5005/api/wines', formData, {
+      .post("http://localhost:5005/api/wines", formData, {
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data', 
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
         },
       })
       .then((response) => {
         if (response.status === 201) {
-          navigate('/dashboard');
+          navigate("/dashboard");
         }
       })
       .catch((error) => {
@@ -63,7 +63,9 @@ function AddNewWine() {
         {error && <p className="text-red-500">{error}</p>}
 
         <div className="space-y-2">
-          <label htmlFor="wineName" className="text-lg">Wine Name</label>
+          <label htmlFor="wineName" className="text-lg">
+            Wine Name
+          </label>
           <input
             type="text"
             id="wineName"
@@ -75,7 +77,9 @@ function AddNewWine() {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="varietalName" className="text-lg">Varietal Name</label>
+          <label htmlFor="varietalName" className="text-lg">
+            Varietal Name
+          </label>
           <input
             type="text"
             id="varietalName"
@@ -87,7 +91,9 @@ function AddNewWine() {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="image" className="text-lg">Upload Image</label>
+          <label htmlFor="image" className="text-lg">
+            Upload Image
+          </label>
           <input
             type="file"
             id="image"
@@ -98,7 +104,9 @@ function AddNewWine() {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="region" className="text-lg">Region</label>
+          <label htmlFor="region" className="text-lg">
+            Region
+          </label>
           <input
             type="text"
             id="region"
@@ -110,7 +118,9 @@ function AddNewWine() {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="price" className="text-lg">Price (€)</label>
+          <label htmlFor="price" className="text-lg">
+            Price (€)
+          </label>
           <input
             type="number"
             id="price"
@@ -122,7 +132,9 @@ function AddNewWine() {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="description" className="text-lg">Description</label>
+          <label htmlFor="description" className="text-lg">
+            Description
+          </label>
           <textarea
             id="description"
             value={description}
@@ -139,7 +151,9 @@ function AddNewWine() {
         </button>
       </form>
 
-      <a href="/dashboard" className="mt-4 text-blue-500 text-center">Back to Home</a>
+      <a href="/dashboard" className="mt-4 text-blue-500 text-center">
+        Back to Home
+      </a>
     </div>
   );
 }
