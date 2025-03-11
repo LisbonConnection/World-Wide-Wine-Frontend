@@ -21,6 +21,11 @@ function WineDetails() {
       ? `http://localhost:5005${wine.image}`
       : "https://i.imgur.com/r8bo8u7.png";
 
+      const rating =
+    wine && wine.ratingAverage && !isNaN(wine.ratingAverage)
+      ? wine.ratingAverage.toFixed(2)
+      : "No rating available";
+
   useEffect(() => {
     axios
       .get(`${API_URL}/api/wines/${id}`) 
@@ -57,6 +62,7 @@ function WineDetails() {
               className="w-2/4 h-auto object-cover rounded-lg mb-2 duration-200 hover:scale-110"
             />
           </div>
+          <div className="mt-10 font-bold"> <span >Rating:</span> {rating}</div>
         </div>
 
         {/* right */}

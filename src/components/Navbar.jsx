@@ -137,10 +137,11 @@ function Navbar() {
                             >
                               NEW COLLECTIONS
                             </Link>
+                            
                           </li>
                           <li>
                             <Link
-                              to="/bestratingns"
+                              to="/bestratings"
                               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             >
                               BEST RATING

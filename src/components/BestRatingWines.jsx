@@ -1,8 +1,14 @@
 import React from 'react'
+import Login from '../pages/Login'
 
 function BestRatingWines() {
   return (
-    <div>Best Rating Wines</div>
+    
+    <>
+    
+    <Login/>
+
+    </>
   )
 }
 

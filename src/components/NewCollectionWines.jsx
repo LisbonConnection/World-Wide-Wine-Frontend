@@ -1,8 +1,13 @@
 import React from 'react'
+import Login from '../pages/Login'
 
 function NewCollectionWines() {
   return (
-    <div>New Collection Wines</div>
+    <>
+    
+    <Login/>
+
+    </>
   )
 }
 

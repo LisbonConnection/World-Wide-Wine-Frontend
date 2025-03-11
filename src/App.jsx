@@ -41,7 +41,7 @@ function App() {
             <Route path="/about" element={ <IsAnon> <About /> </IsAnon>} />
             <Route path="/allcollections" element={ <IsAnon> <AllCollectionWines /> </IsAnon>} />
             <Route path="/newcollections" element={ <IsAnon> <NewCollectionWines /> </IsAnon>} />
-            <Route path="/bestratingns" element={ <IsAnon> <BestRatingWines /> </IsAnon>} />
+            <Route path="/bestratings" element={ <IsAnon> <BestRatingWines /> </IsAnon>} />
             <Route path="/wine/:id" element={<WineDetails/>}/>
             <Route path="/dashboard" element={<Dashboard/> }/>
             <Route path="/addwine" element={<AddNewWine/>}/>
