@@ -5,6 +5,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
 import { AiOutlinePlus } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
+import { FaInfoCircle } from "react-icons/fa";
 
 function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -158,9 +159,9 @@ function Navbar() {
 
           {!isLoggedIn && (
             <>
-              <div className="flex justify-end space-x-10">
+              <div className="flex justify-end space-x-4">
                 <Link to="signup">
-                  <button className="hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-xl text-gray-600 font-bold h-16 w-40 rounded flex justify-center items-center text-center">
+                  <button className="hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-xl text-gray-600 font-bold h-16 w-30 rounded flex justify-center items-center text-center">
                     Sign Up
                   </button>
                 </Link>
@@ -176,6 +177,13 @@ function Navbar() {
                     <div className="mt-5 ml-3 bg-purple-600 hover:bg-blue-700 h-13 w-70 rounded"></div>
                   </div>
                 </Link>
+
+                <div className="flex h-8 w-8 items-center text-center justify-center mt-5 text-gray-700 border-1 border-gray-400 rounded-full">
+                    <Link to="/about">
+                      {" "}
+                      <FaInfoCircle size={24} />{" "}
+                    </Link>
+                  </div>
               </div>
             </>
           )}

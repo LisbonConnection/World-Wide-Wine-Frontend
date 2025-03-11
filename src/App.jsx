@@ -30,7 +30,7 @@ function App() {
   return (
     <>
 
-        <div className="container relative mx-auto p-6 ">
+        <div className="container relative mx-auto p-6">
           <Navbar />
           <ToastContainer position="top-center" autoClose ={2000}/>
 

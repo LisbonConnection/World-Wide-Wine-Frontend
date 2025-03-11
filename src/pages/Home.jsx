@@ -3,7 +3,7 @@ import React from 'react'
 function Home() {
   
   return (
-    <div>Welcome to World Wide Wine!</div>
+    <div className='flex justify-center items-center h-screen'>Welcome to World Wide Wine!</div>
   )
 }
 
