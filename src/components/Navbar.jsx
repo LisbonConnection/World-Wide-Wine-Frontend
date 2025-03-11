@@ -3,7 +3,6 @@ import { AuthContext } from "../context/auth.context";
 import { Link, useNavigate } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
-import { AiOutlinePlus } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
 
@@ -83,7 +82,9 @@ function Navbar() {
           <div className="flex space-x-20">
             <Link to={isLoggedIn ? "/dashboard" : "/"}>
               <div className="flex flex-col">
-                <p className="w-auto text-xl font-bold flex justify-center">WWW</p>
+                <p className="w-auto text-xl font-bold flex justify-center">
+                  WWW
+                </p>
                 <p className="w-auto italic text-sm">World Wide Wines</p>
               </div>
             </Link>
@@ -138,7 +139,6 @@ function Navbar() {
                             >
                               NEW COLLECTIONS
                             </Link>
-                            
                           </li>
                           <li>
                             <Link
@@ -179,11 +179,10 @@ function Navbar() {
                 </Link>
 
                 <div className="flex h-8 w-8 items-center text-center justify-center mt-5 text-gray-700 border-1 border-gray-400 rounded-full">
-                    <Link to="/about">
-                      {" "}
-                      <FaInfoCircle size={24} />{" "}
-                    </Link>
-                  </div>
+                  <Link to="/about">
+                    <FaInfoCircle size={24} />
+                  </Link>
+                </div>
               </div>
             </>
           )}
@@ -198,12 +197,6 @@ function Navbar() {
                       <FaPlus size={24} />{" "}
                     </Link>
                   </div>
-                  {/* <div className="flex">
-                    
-                    <span className="mt-6 text-xl text-gray-600 font-bold">
-                      {user && `Hi ${user.name}`}
-                    </span>
-                  </div> */}
 
                   <div className="relative flex justify-center items-center text-center mb-5">
                     <button

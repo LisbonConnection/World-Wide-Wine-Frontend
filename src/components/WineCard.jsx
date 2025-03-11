@@ -8,10 +8,11 @@ function WineCard({ wine, onWineClick }) {
       : "No rating available";
 
   // Prepend the base URL to the image path if it's a relative path
-  const imageUrl = wine.image && wine.image !== "" 
-    ? `http://localhost:5005${wine.image}` 
-    : "https://i.imgur.com/r8bo8u7.png";  
-    
+  const imageUrl =
+    wine.image && wine.image !== ""
+      ? `http://localhost:5005${wine.image}`
+      : "https://i.imgur.com/r8bo8u7.png";
+
   return (
     <>
       <div className="w-full m-2 rounded-lg">
@@ -29,7 +30,7 @@ function WineCard({ wine, onWineClick }) {
               {wine.wineName}
             </h5>
             <h3 className="absolute duration-200 w-full bottom-2 group-hover:scale-110 group-hover:text-white">
-            {rating}
+              {rating}
             </h3>
           </div>
         </div>

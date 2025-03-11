@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const API_URL = "http://localhost:5005";
 
@@ -59,6 +60,7 @@ function UpdateWine() {
     })
       .then((response) => {
         navigate(`/dashboard`);
+        toast.success('Wine successfully updated!')
       })
       .catch((error) => {
         console.error('Error updating wine:', error);

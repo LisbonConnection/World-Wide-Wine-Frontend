@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+toast
 
 function AddNewWine() {
   const [wineName, setwineName] = useState("");
@@ -44,6 +46,7 @@ function AddNewWine() {
       .then((response) => {
         if (response.status === 201) {
           navigate("/dashboard");
+          toast.success("Wine added succesfully!")
         }
       })
       .catch((error) => {
@@ -143,23 +146,42 @@ function AddNewWine() {
           ></textarea>
         </div>
 
-        <button
-          type="submit"
-          className="bg-blue-500 text-white p-2 rounded w-full hover:bg-blue-600"
-        >
-          Add Wine
-        </button>
+        <div className="relative flex justify-center items-center text-center">
+          <button
+            // onClick={() => navigate("/dashboard")}
+            className="absolute bg-blue-600 text-white text-xl hover:bg-blue-800 font-bold text-center h-8 w-80  p-5 flex items-center justify-center space-x-5 rounded transition-all ease-in-out duration-1000 hover:scale-110"
+          >
+            <p className="flex justify-center items-center text-center ">
+              Add wine
+            </p>
+          </button>
+
+          <div className="mt-5 ml-3 bg-purple-600 hover:bg-blue-700 h-8 w-80 rounded"></div>
+        </div>
       </form>
 
       <div className="relative flex justify-center items-center mt-10 text-center">
-        <button
+        {/* <button
           onClick={() => navigate("/dashboard")}
           className="absolute bg-blue-500 text-white text-l hover:bg-blue-800 font-bold text-center h-10 w-60 p-5 flex items-center justify-center space-x-5 rounded transition-all ease-in-out duration-1000 hover:scale-110"
         >
           <p className="flex justify-center items-center text-center">
             Back to Homepage
           </p>
-        </button>
+        </button> */}
+
+        <div className="relative flex justify-center items-center text-center">
+          <button
+            onClick={() => navigate("/dashboard")}
+            className="absolute bg-blue-600 text-white text-xl hover:bg-blue-800 font-bold text-center h-8 w-80  p-5 flex items-center justify-center space-x-5 rounded transition-all ease-in-out duration-1000 hover:scale-110"
+          >
+            <p className="flex justify-center items-center text-center ">
+              Back to Homepage
+            </p>
+          </button>
+
+          <div className="mt-5 ml-3 bg-purple-600 hover:bg-blue-700 h-8 w-80 rounded"></div>
+        </div>
       </div>
     </div>
   );

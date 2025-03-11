@@ -62,6 +62,7 @@ function AuthWineDetails() {
       })
       .then((response) => {
         console.log("Wine deleted successfully:", response.data);
+        toast.success('Wine successfully deleted!')
         navigate("/dashboard");
       })
       .catch((error) => {

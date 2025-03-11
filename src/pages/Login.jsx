@@ -32,7 +32,7 @@ function Login(props) {
 
         authenticateUser();
         navigate("/dashboard");
-        toast.success("Login successful! Welcome to WWW.");
+        toast.success("Login successful! Welcome to WWW");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;

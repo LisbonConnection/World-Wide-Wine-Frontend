@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const API_URL = "http://localhost:5005";
 
@@ -29,6 +30,7 @@ function SignupPage(props) {
       .post(`${API_URL}/auth/signup`, requestBody)
       .then((response) => {
         navigate("/login");
+        toast.success('Account created successfully')
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
