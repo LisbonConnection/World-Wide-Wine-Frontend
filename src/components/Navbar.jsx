@@ -183,7 +183,7 @@ function Navbar() {
             <>
               <div className="flex justify-between">
                 <div className="flex space-x-5">
-                  <div className="flex h-10 w-10 items-center text-center justify-center mt-5 text-gray-400 border-1 border-gray-400 rounded-full">
+                  <div className="flex h-10 w-10 items-center text-center justify-center mt-5 text-gray-600 border-1 border-gray-400 rounded-full">
                     <Link to="/addwine">
                       {" "}
                       <FaPlus size={24} />{" "}
