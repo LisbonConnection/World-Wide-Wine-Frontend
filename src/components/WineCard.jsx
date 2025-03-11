@@ -34,27 +34,6 @@ function WineCard({ wine, onWineClick }) {
           </div>
         </div>
       </div>
-
-      {/* <div
-      className="wine-card border rounded p-4 shadow-lg cursor-pointer"
-      onClick={() => onWineClick(wine)}
-      style={{ cursor: "pointer" }}
-    >
-      Render the image
-      <div className="image-container mb-4">
-        <img
-          src={imageUrl}
-          alt={wine.wineName}
-          className="w-full h-48 object-cover rounded mb-2"
-        />
-      </div>
-
-      <h3 className="font-bold text-xl">{wine.wineName}</h3>
-      <p><strong>Varietal:</strong> {wine.varietalName}</p>
-      <p><strong>Region:</strong> {wine.region}</p>
-      <p><strong>Price:</strong> €{wine.price}</p>
-      <p><strong>Rating:</strong> {rating}</p>
-    </div> */}
     </>
   );
 }

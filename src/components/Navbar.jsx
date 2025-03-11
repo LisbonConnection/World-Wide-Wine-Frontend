@@ -81,9 +81,9 @@ function Navbar() {
         <div className="flex my-6 justify-between ml-20 mr-20">
           <div className="flex space-x-20">
             <Link to={isLoggedIn ? "/dashboard" : "/"}>
-              <div className="flex">
-                <p className="mt-2 h-18 w-auto text-4xl font-bold">WWW - </p>
-                <p className="mt-4 h-14 w-auto text-xl italic">World Wide Wines</p>
+              <div className="flex flex-col">
+                <p className="w-auto text-xl font-bold flex justify-center">WWW</p>
+                <p className="w-auto italic text-sm">World Wide Wines</p>
               </div>
             </Link>
 
