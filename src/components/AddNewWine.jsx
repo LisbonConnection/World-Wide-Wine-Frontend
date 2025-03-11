@@ -62,7 +62,7 @@ function AddNewWine() {
 
         {error && <p className="text-red-500">{error}</p>}
 
-        <div className="space-y-2">
+        <div className="space-y-2 w-full">
           <label htmlFor="wineName" className="text-lg">
             Wine Name
           </label>
@@ -76,7 +76,7 @@ function AddNewWine() {
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 w-full">
           <label htmlFor="varietalName" className="text-lg">
             Varietal Name
           </label>
@@ -90,7 +90,7 @@ function AddNewWine() {
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 w-full">
           <label htmlFor="image" className="text-lg">
             Upload Image
           </label>
@@ -103,7 +103,7 @@ function AddNewWine() {
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 w-full">
           <label htmlFor="region" className="text-lg">
             Region
           </label>
@@ -117,7 +117,7 @@ function AddNewWine() {
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 w-full">
           <label htmlFor="price" className="text-lg">
             Price (€)
           </label>
@@ -131,7 +131,7 @@ function AddNewWine() {
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 w-full">
           <label htmlFor="description" className="text-lg">
             Description
           </label>
@@ -151,9 +151,16 @@ function AddNewWine() {
         </button>
       </form>
 
-      <a href="/dashboard" className="mt-4 text-blue-500 text-center">
-        Back to Home
-      </a>
+      <div className="relative flex justify-center items-center mt-10 text-center">
+        <button
+          onClick={() => navigate("/dashboard")}
+          className="absolute bg-blue-500 text-white text-l hover:bg-blue-800 font-bold text-center h-10 w-60 p-5 flex items-center justify-center space-x-5 rounded transition-all ease-in-out duration-1000 hover:scale-110"
+        >
+          <p className="flex justify-center items-center text-center">
+            Back to Homepage
+          </p>
+        </button>
+      </div>
     </div>
   );
 }
