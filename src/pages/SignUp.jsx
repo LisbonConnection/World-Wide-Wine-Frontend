@@ -38,7 +38,7 @@ function SignupPage(props) {
 
   return (
     <>
-      <div className="flex-col items-center justify-center text-center space-y-10">
+      <div className="flex-col items-center justify-center text-center space-y-2">
         <form
           className="flex flex-col items-center justify-center text-center space-y-2"
           onSubmit={handleSignupSubmit}
@@ -51,7 +51,7 @@ function SignupPage(props) {
             name="email"
             value={email}
             onChange={handleEmail}
-            className="border p-2"
+            className="border p-2 rounded"
           />
 
           <label>Password:</label>
@@ -60,7 +60,7 @@ function SignupPage(props) {
             name="password"
             value={password}
             onChange={handlePassword}
-            className="border p-2"
+            className="border p-2 rounded"
           />
 
           <label>Name:</label>
@@ -69,17 +69,27 @@ function SignupPage(props) {
             name="name"
             value={name}
             onChange={handleName}
-            className="border p-2"
+            className="border p-2 rounded"
           />
 
-          <button type="submit" className="bg-blue-500 text-white p-2">
+          {/* <button type="submit" className="bg-blue-500 text-white p-2">
             Sign Up
+          </button> */}
+
+<div className="relative flex justify-center items-center  text-center">
+          <button className="absolute bg-blue-600 text-white text-xl hover:bg-blue-800 font-bold text-center h-10 w-40  flex items-center justify-center space-x-5 rounded transition-all ease-in-out duration-1000 hover:scale-110">
+            <p className="flex justify-center items-center text-center ">
+              Sign Up
+            </p>
           </button>
+
+          <div className="mt-4 ml-3 bg-purple-600 hover:bg-blue-700 h-8 w-40 rounded"></div>
+        </div>
         </form>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         <p>Already have an account?</p>
-        <Link to={"/login"}> Login</Link>
+        <Link to={"/login"}> <p className="hover:font-bold text-xl text-gray-600 font-bold h-16 w-auto rounded">Login</p> </Link>
       </div>
     </>
   );

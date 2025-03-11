@@ -160,8 +160,8 @@ function Navbar() {
             <>
               <div className="flex justify-end space-x-10">
                 <Link to="signup">
-                  <button className="hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-xl text-gray-600 font-bold h-16 w-auto rounded flex items-center">
-                    Signup
+                  <button className="hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-xl text-gray-600 font-bold h-16 w-40 rounded flex justify-center items-center text-center">
+                    Sign Up
                   </button>
                 </Link>
 
