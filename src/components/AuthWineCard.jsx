@@ -5,10 +5,11 @@ function AuthWineCard({ wine, onWineClick }) {
   const rating = wine.ratingAverage && !isNaN(wine.ratingAverage) ? wine.ratingAverage.toFixed(2) : "No rating available";
 
   const imageUrl = wine.image && wine.image !== "" 
-  ? `http://localhost:5005${wine.image}` 
+  ? `${import.meta.env.VITE_API_URL}${wine.image}` 
   : "https://i.imgur.com/r8bo8u7.png";  
 
   return (
+
     <>
     <div className="w-full m-2 rounded-lg">
       <div className="flex items-center justify-center w-full text-xl text-center text-white rounded-lg">

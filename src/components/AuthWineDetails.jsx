@@ -16,7 +16,7 @@ function AuthWineDetails() {
 
   const imageUrl =
     wine && wine.image && wine.image !== ""
-      ? `https://localhost:5005${wine.image}`
+      ? `http://localhost:5005${wine.image}`
       : "https://i.imgur.com/r8bo8u7.png";
 
   useEffect(() => {
