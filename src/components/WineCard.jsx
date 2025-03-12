@@ -8,10 +8,10 @@ function WineCard({ wine, onWineClick }) {
       : "No rating available";
 
   // Prepend the base URL to the image path if it's a relative path
-  const imageUrl =
-    wine.image && wine.image !== ""
-      ? `http://localhost:5005${wine.image}`
-      : "https://i.imgur.com/r8bo8u7.png";
+
+  const imageUrl = wine.image && wine.image !== "" 
+  ? `${import.meta.env.VITE_API_URL}${wine.image}` 
+  : "https://i.imgur.com/r8bo8u7.png";
 
   return (
     <>
