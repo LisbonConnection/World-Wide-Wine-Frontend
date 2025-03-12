@@ -15,9 +15,9 @@ function WineDetails() {
   const navigate = useNavigate(); 
 
   const imageUrl = wine && wine.image && wine.image !== "" 
-  ? `${import.meta.env.VITE_API_URL}${wine.image}` 
+  ? `https://world-wide-wine.onrender.com${wine.image}` 
   : "https://i.imgur.com/r8bo8u7.png";
-
+  
       const rating =
     wine && wine.ratingAverage && !isNaN(wine.ratingAverage)
       ? wine.ratingAverage.toFixed(2)

@@ -99,7 +99,7 @@ function Navbar() {
         <div className="flex my-6 justify-between ml-20 mr-20">
           <div className="flex space-x-20">
             <Link to={isLoggedIn ? "/dashboard" : "/"} onClick={handleNavigate}>
-              <div className="flex flex-col">
+              <div className="flex flex-col ml-5">
                 <p className="w-auto text-xl font-bold flex justify-center">
                   WWW
                 </p>
@@ -140,7 +140,7 @@ function Navbar() {
                       >
                         COLLECTION <ChevronDownIcon className="h-5 w-5 ml-2" />
                       </Link>
-                      <div className="absolute left-0 mt-2 w-100 bg-white shadow-lg opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-300 ease-out">
+                      <div className="absolute left-0 mt-2 w-100 bg-white shadow-lg opacity-0 group-hover:opacity-100 transform scale-110 group-hover:scale-100 transition-all duration-300 ease-out">
                         <ul className="flex">
                           <li>
                             <Link
@@ -196,7 +196,7 @@ function Navbar() {
                   </div>
                 </Link>
 
-                <div className="flex h-8 w-8 items-center text-center justify-center mt-5 text-gray-700 border-1 border-gray-400 rounded-full">
+                <div className="flex h-8 w-8 ml-5 mr-5 items-center text-center justify-center mt-5 text-gray-700 border-1 border-gray-400 rounded-full">
                   <Link to="/about">
                     <FaInfoCircle size={24} />
                   </Link>
