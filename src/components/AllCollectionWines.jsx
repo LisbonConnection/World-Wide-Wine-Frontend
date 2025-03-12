@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom"; 
 import WineCard from "./WineCard";
 
-const API_URL = "http://localhost:5005";
 
 function AllCollectionWines() {
   const [wines, setWines] = useState([]);
@@ -11,7 +10,7 @@ function AllCollectionWines() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/wines`)
+      .get(`${import.meta.env.VITE_API_URL}/api/wines`)
       .then((response) => {
         setWines(response.data);
       })

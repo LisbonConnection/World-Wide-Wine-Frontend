@@ -4,8 +4,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { FaHome } from "react-icons/fa";
 
-const API_URL = "http://localhost:5005";
-
 
 function WineDetails() {
     // Get Id of specific wine using useparams 
@@ -28,7 +26,7 @@ function WineDetails() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/wines/${id}`) 
+      .get(`${import.meta.env.VITE_API_URL}/api/wines/${id}`) 
       .then((response) => {
         setWine(response.data);
       })

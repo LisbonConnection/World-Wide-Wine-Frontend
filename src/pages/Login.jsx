@@ -5,7 +5,6 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { toast } from "react-toastify";
 
-const API_URL = "http://localhost:5005";
 
 function Login(props) {
   const [email, setEmail] = useState("");
@@ -23,7 +22,7 @@ function Login(props) {
     const requestBody = { email, password };
 
     axios
-      .post(`${API_URL}/auth/login`, requestBody)
+      .post(`${import.meta.env.VITE_API_URL}/auth/login`, requestBody)
       .then((response) => {
         // Request to the server's endpoint `/auth/login` returns a response
         // with the JWT string ->  response.data.authToken

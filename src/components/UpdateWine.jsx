@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const API_URL = "http://localhost:5005";
 
 function UpdateWine() {
 
@@ -19,7 +18,7 @@ function UpdateWine() {
 
   // get the wine details to populate the form
   useEffect(() => {
-    axios.get(`${API_URL}/api/wines/${id}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/api/wines/${id}`)
       .then((response) => {
         const wine = response.data;
         setWineName(wine.wineName);
@@ -52,7 +51,7 @@ function UpdateWine() {
       return;
     }
 
-    axios.put(`${API_URL}/api/wines/${id}`, updatedWine, {
+    axios.put(`${import.meta.env.VITE_API_URL}/api/wines/${id}`, updatedWine, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',

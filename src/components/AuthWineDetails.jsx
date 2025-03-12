@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import { FaTrash } from "react-icons/fa";
 import { FaPenSquare } from "react-icons/fa";
 
-const API_URL = "http://localhost:5005";
 
 function AuthWineDetails() {
   const { id } = useParams();
@@ -22,7 +21,7 @@ function AuthWineDetails() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/wines/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/api/wines/${id}`)
       .then((response) => {
         setWine(response.data);
         setRating(response.data.ratingAverage);
@@ -55,7 +54,7 @@ function AuthWineDetails() {
     }
 
     axios
-      .delete(`${API_URL}/api/wines/${id}`, {
+      .delete(`${import.meta.env.VITE_API_URL}/api/wines/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -84,7 +83,7 @@ function AuthWineDetails() {
 
     axios
       .put(
-        `${API_URL}/api/wines/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/wines/${id}`,
         { ratingAverage: newRating },
         {
           headers: {

@@ -22,7 +22,7 @@ function Navbar() {
     }
 
     axios
-      .get(`http://localhost:5005/api/wines/search`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/wines/search`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -52,7 +52,7 @@ function Navbar() {
     }
 
     axios
-      .get(`http://localhost:5005/api/wines/search`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/wines/search`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

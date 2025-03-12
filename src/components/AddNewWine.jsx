@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-toast
 
 function AddNewWine() {
   const [wineName, setwineName] = useState("");
@@ -37,7 +36,7 @@ function AddNewWine() {
     formData.append("varietalName", varietalName);
 
     axios
-      .post("http://localhost:5005/api/wines", formData, {
+      .post(`${import.meta.env.VITE_API_URL}/api/wines`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

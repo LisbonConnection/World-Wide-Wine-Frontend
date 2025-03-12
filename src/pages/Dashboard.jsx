@@ -7,15 +7,13 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 
 
-const API_URL = "http://localhost:5005";
-
 function Dashboard() {
   const [wines, setWines] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/wines`)
+      .get(`${import.meta.env.VITE_API_URL}/api/wines`)
       .then((response) => {
         setWines(response.data);
       })
