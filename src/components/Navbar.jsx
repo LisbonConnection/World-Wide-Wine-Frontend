@@ -103,7 +103,7 @@ function Navbar() {
                 <p className="w-auto text-xl font-bold flex justify-center">
                   WWW
                 </p>
-                <p className="w-auto italic text-sm">World Wide Wines</p>
+                <p className="w-auto italic text-sm">World Wide Wine</p>
               </div>
             </Link>
 
