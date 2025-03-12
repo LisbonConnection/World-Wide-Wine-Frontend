@@ -10,7 +10,7 @@ function WineCard({ wine, onWineClick }) {
   // Prepend the base URL to the image path if it's a relative path
 
   const imageUrl = wine && wine.image && wine.image !== "" 
-  ? `${import.meta.env.VITE_API_URL}${wine.image}` 
+  ? `https://world-wide-wine.onrender.com${wine.image}` 
   : "https://i.imgur.com/r8bo8u7.png";
 
   return (
