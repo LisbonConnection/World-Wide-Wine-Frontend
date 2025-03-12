@@ -50,7 +50,7 @@ function About() {
         </div>
 
         {/* right */}
-        <div className="p-6 bg-white w-1/2 flex flex-col justify-center items-center">
+        <div className="p-6 bg-gray-50 w-1/2 flex flex-col justify-center items-center">
           <div className="flex flex-col ">
             <div className="flex items-center justify-center">
               <img

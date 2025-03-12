@@ -63,6 +63,7 @@ function AuthProviderWrapper(props) {
         // and update the state variables    
         authenticateUser();
         navigate('/');
+        
       }  
 
       useEffect(() => {                                  

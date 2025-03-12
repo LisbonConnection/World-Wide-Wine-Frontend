@@ -1,15 +1,17 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
 import { FaPlus } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
+import { useEffect } from "react";
 
 function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const [text, setText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const location = useLocation();
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -75,12 +77,28 @@ function Navbar() {
     setSearchResults([]);
   };
 
+  const handleNavigate = () => {
+    setText("");
+    setSearchResults([]);
+  };
+
+  const handleLogout = () => {
+    logOutUser();
+    setText("");
+    setSearchResults([]);
+  };
+
+  useEffect(() => {
+    setText("");
+    setSearchResults([]);
+  }, [location]);
+
   return (
     <>
       <div>
         <div className="flex my-6 justify-between ml-20 mr-20">
           <div className="flex space-x-20">
-            <Link to={isLoggedIn ? "/dashboard" : "/"}>
+            <Link to={isLoggedIn ? "/dashboard" : "/"} onClick={handleNavigate}>
               <div className="flex flex-col">
                 <p className="w-auto text-xl font-bold flex justify-center">
                   WWW
@@ -192,7 +210,7 @@ function Navbar() {
               <div className="flex justify-between">
                 <div className="flex space-x-5">
                   <div className="flex h-10 w-10 items-center text-center justify-center mt-5 text-gray-600 border-1 border-gray-400 rounded-full">
-                    <Link to="/addwine">
+                    <Link to="/addwine" onClick={handleNavigate}>
                       {" "}
                       <FaPlus size={24} />{" "}
                     </Link>
@@ -200,7 +218,7 @@ function Navbar() {
 
                   <div className="relative flex justify-center items-center text-center mb-5">
                     <button
-                      onClick={logOutUser}
+                      onClick={handleLogout}
                       className="absolute bg-blue-600 text-white text-xl hover:bg-blue-800 font-bold text-center h-15 w-70 flex items-center justify-center rounded transition-all ease-in-out duration-1000 hover:scale-110"
                     >
                       <p className="flex justify-center items-center text-center ">
@@ -216,7 +234,6 @@ function Navbar() {
           )}
         </div>
 
-        {/* Display Search Results */}
         {searchResults.length > 0 && (
           <div className="search-results mt-4 bg-white shadow-lg p-4">
             <h2 className="text-xl font-bold">Wine Collections:</h2>
