@@ -160,14 +160,6 @@ function AddNewWine() {
       </form>
 
       <div className="relative flex justify-center items-center mt-10 text-center">
-        {/* <button
-          onClick={() => navigate("/dashboard")}
-          className="absolute bg-blue-500 text-white text-l hover:bg-blue-800 font-bold text-center h-10 w-60 p-5 flex items-center justify-center space-x-5 rounded transition-all ease-in-out duration-1000 hover:scale-110"
-        >
-          <p className="flex justify-center items-center text-center">
-            Back to Homepage
-          </p>
-        </button> */}
 
         <div className="relative flex justify-center items-center text-center">
           <button
