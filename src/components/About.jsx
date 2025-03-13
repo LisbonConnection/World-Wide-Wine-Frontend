@@ -10,7 +10,7 @@ function About() {
         <div className=" flex space-y-10 bg-white shadow-2xl rounded-2xl"></div>
 
         {/* Left */}
-        <div className="p-6 bg-gray-50 w-1/2 flex flex-col justify-center items-center">
+        <div className="p-6 bg-gray-100 w-1/2 flex flex-col justify-center items-center">
           <div className="flex flex-col ">
             <div className="flex items-center justify-center">
               <img

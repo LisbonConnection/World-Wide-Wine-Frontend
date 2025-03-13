@@ -25,7 +25,7 @@ import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <>
-      <div className="container relative mx-auto p-6">
+      <div className="container relative mx-auto p-6 bg-gray-100 bg-opacity-60">
         <Navbar />
         <ToastContainer position="top-center" autoClose={2000} />
 

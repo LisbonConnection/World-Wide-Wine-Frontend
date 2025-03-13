@@ -96,7 +96,7 @@ function Navbar() {
   return (
     <>
       <div>
-        <div className="flex my-4 justify-between ml-20 mr-20">
+        <div className="flex my-4 justify-between ml-20 mr-20 h-ful mx-auto">
           <div className="flex space-x-20">
             <Link to={isLoggedIn ? "/dashboard" : "/"} onClick={handleNavigate}>
               <div className="flex flex-col ml-5">

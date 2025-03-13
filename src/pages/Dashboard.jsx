@@ -39,7 +39,7 @@ function Dashboard() {
               </Link>
             ))
           ) : (
-            <p>No wines available</p>
+            <pflex justify-center items-center text-center>Loading....</pflex>
           )}
         </div>
       </div>

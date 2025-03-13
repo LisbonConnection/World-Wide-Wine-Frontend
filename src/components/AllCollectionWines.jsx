@@ -35,7 +35,7 @@ function AllCollectionWines() {
             </Link>
           ))
         ) : (
-          <p>No wines available</p>
+          <p className="flex justify-center items-center text-center">Loading...</p>
         )}
       </div>
     </div>
