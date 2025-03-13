@@ -96,14 +96,14 @@ function Navbar() {
   return (
     <>
       <div>
-        <div className="flex my-6 justify-between ml-20 mr-20">
+        <div className="flex my-4 justify-between ml-20 mr-20">
           <div className="flex space-x-20">
             <Link to={isLoggedIn ? "/dashboard" : "/"} onClick={handleNavigate}>
               <div className="flex flex-col ml-5">
-                <p className="w-auto text-xl font-bold flex justify-center">
+                <p className="w-auto text-xl font-bold flex justify-cente text-blue-950">
                   WWW
                 </p>
-                <p className="w-auto italic text-sm">World Wide Wine</p>
+                <p className="w-auto italic text-sm text-blue-950">World Wide Wine</p>
               </div>
             </Link>
 
@@ -179,7 +179,7 @@ function Navbar() {
             <>
               <div className="flex justify-end space-x-4">
                 <Link to="signup">
-                  <button className="hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-xl text-gray-600 font-bold h-16 w-30 rounded flex justify-center items-center text-center">
+                  <button className="hover:bg-blue-100 hover:text-blue-400 hover:font-bold text-xl text-gray-600 font-bold h-14 w-30 rounded flex justify-center items-center text-center">
                     Sign Up
                   </button>
                 </Link>

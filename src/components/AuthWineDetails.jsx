@@ -107,7 +107,7 @@ function AuthWineDetails() {
     <>
       {/* main div */}
 
-      <div className="flex min-h-screen">
+      <div className="flex min-h-screen mt-10">
         <div className=" flex space-y-10 bg-white shadow-2xl rounded-2xl"></div>
 
         {/* Left */}
