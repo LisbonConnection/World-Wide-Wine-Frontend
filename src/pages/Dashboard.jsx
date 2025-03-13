@@ -39,7 +39,7 @@ function Dashboard() {
               </Link>
             ))
           ) : (
-            <pflex justify-center items-center text-center>Loading....</pflex>
+            <p className="flex justify-center items-center text-center">Loading....</p>
           )}
         </div>
       </div>
